@@ -27,7 +27,7 @@ before(async () => {
   });
   await new Promise(r => srv.listen(0, '127.0.0.1', r)); url = `http://localhost:${srv.address().port}/index.html?emulator=1`;
   b = await chromium.launch(existsSync('/opt/pw-browsers/chromium') ? { executablePath: '/opt/pw-browsers/chromium' } : {});
-  env = await initializeTestEnvironment({ projectId: 'demo-silah', firestore: { rules: readFileSync(RULES, 'utf8'), host: '127.0.0.1', port: 8080 } });
+  env = await initializeTestEnvironment({ projectId: 'demo-silah', firestore: { rules: readFileSync(process.env.RULES_FILE || RULES, 'utf8'), host: '127.0.0.1', port: 8080 } });
   await env.clearFirestore();
 });
 after(async () => { await b.close(); srv.close(); await env.cleanup(); });

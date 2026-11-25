@@ -11,7 +11,7 @@
 <link rel="icon" href="logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Baloo+Bhaijaan+2:wght@700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"ما هي أعمار الأطفال المقبولين؟","acceptedAnswer":{"@type":"Answer","text":"نستقبل الأطفال من 4 سنوات، ولكل طفل حلقة فردية تناسب عمره ومستواه."}},
@@ -164,224 +164,631 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;
 footer a{color:#fff}
 .float{position:fixed;bottom:max(18px,env(safe-area-inset-bottom,0px));inset-inline-end:18px;z-index:30;box-shadow:0 10px 24px rgba(31,143,90,.35)}
 </style>
+<style>
+:root {
+  --cream:#FBF7F0; --sand:#F2EADC; --ink:#14213D; --navy:#1236A0;
+  --navy-deep:#0C2470; --crimson:#C8174D; --gold:#C9A24B; --sage:#DDEBE3;
+  --muted:#5E6678; --line:#E6DCCB; --wa:#1F8F5A;
+  --shadow:0 18px 40px -18px rgba(20,33,61,.25);
+  --body:"IBM Plex Sans Arabic", "Plex fallback", sans-serif;
+  --heading:"Baloo Bhaijaan 2", "Baloo fallback", sans-serif;
+  color-scheme:light;
+}
+@font-face{font-family:"Plex fallback";src:local("Arial"),local("Liberation Sans");size-adjust:105%;ascent-override:109%;descent-override:32%;line-gap-override:0%}
+@font-face{font-family:"Baloo fallback";src:local("Arial Bold"),local("Liberation Sans Bold");size-adjust:103%;ascent-override:104%;descent-override:27%;line-gap-override:0%}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-block-start:92px}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 clamp(1.0625rem,1rem + .25vw,1.125rem)/1.75 var(--body)}
+[hidden]{display:none!important}
+h1,h2,h3,p,figure,blockquote,dl,dd{margin:0}
+h1,h2,h3{font-family:var(--heading);line-height:1.2;color:var(--navy-deep)}
+h1{font-size:clamp(2.1rem,6vw,3.6rem);font-weight:800;margin-block:10px 14px}
+h1 span{display:block;color:var(--navy)}
+h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800}
+h3{font-size:1.35rem;font-weight:700}
+small{font-size:.84rem}
+ul,ol{padding:0;margin:0;list-style:none}
+a{color:var(--navy);text-underline-offset:.22em}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:wait;opacity:.75}
+:focus-visible{outline:3px solid var(--navy);outline-offset:4px}
+footer :focus-visible,.dark :focus-visible{outline-color:var(--gold)}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.icon{inline-size:24px;block-size:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}
+.wrap{width:min(100% - 36px,1140px);margin-inline:auto}
+.header{position:sticky;inset-block-start:0;z-index:10;background:var(--cream);border-block-end:1px solid var(--line)}
+.header.compact{background:rgb(251 247 240 / .94);backdrop-filter:blur(12px)}
+.header-inner,.header-actions,.brand,.actions,.menu-top{display:flex;align-items:center}
+.header-inner{justify-content:space-between;gap:8px;min-block-size:72px}
+.compact .header-inner{min-block-size:62px}
+.brand{gap:8px;text-decoration:none;line-height:1.1;color:var(--navy-deep)}
+.brand img{display:block;border-radius:50%;mix-blend-mode:multiply;width:40px;height:40px}
+.brand strong{display:block;font:800 1.6rem/.95 var(--heading)}
+.brand small{display:block;margin-block-start:5px;font-size:.72rem;white-space:nowrap}
+.header-actions{gap:8px}
+.desktop-nav,.header-actions>.outline{display:none}
+.button,.icon-button,.floating-wa{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-block-size:48px;border:1px solid transparent;border-radius:100px;padding:8px 17px;text-decoration:none;font-weight:600;font-size:.94rem;line-height:1.4}
+.primary{background:var(--crimson);color:white}
+.outline,.icon-button{background:transparent;border-color:var(--line);color:var(--navy-deep)}
+.whatsapp{color:#146943;background:transparent;border-color:var(--wa)}
+.whatsapp .icon{color:var(--wa)}
+.header .primary{font-size:.82rem;padding-inline:9px;white-space:nowrap}
+.icon-button{padding:0;inline-size:48px}
+.menu{position:fixed;inset:0;margin:0;max-width:none;max-height:none;width:100%;height:100dvh;border:0;background:var(--cream);color:var(--ink);padding:24px}
+.menu-top{justify-content:space-between;margin-block-end:24px}
+.menu nav a{display:flex;align-items:center;min-height:52px;border-block-end:1px solid var(--line);text-decoration:none;font-weight:600}
+.menu>.button{margin-block-start:22px;margin-inline-end:8px}
+body:has(.menu[open]){overflow:hidden}
+main{position:relative;isolation:isolate;overflow:clip}
+.thread{position:absolute;inset:0;inline-size:100%;block-size:100%;z-index:1;pointer-events:none;overflow:visible;opacity:.7}
+.thread path{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round}
+.band,.hero{position:relative}
+.band{padding-block:clamp(50px,8vw,94px)}
+.band>.wrap,.hero-grid{position:relative;z-index:2}
+.sand{background:var(--sand)}
+.section-title{display:flex;align-items:center;gap:12px;margin-block-end:24px}
+.knot{display:inline-grid;place-items:center;inline-size:11px;block-size:11px;flex:none;border-radius:50%;background:var(--crimson);box-shadow:0 0 0 5px var(--cream)}
+.sand .knot{box-shadow:0 0 0 5px var(--sand)}
+.texture::before,.hero-arch::before{content:"";position:absolute;inset:0;pointer-events:none;background-size:44px 44px;opacity:.057;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Cpath fill='none' stroke='%23C9A24B' stroke-width='1.6' d='M22 3l5.5 13.5L41 22l-13.5 5.5L22 41l-5.5-13.5L3 22l13.5-5.5zM13 13h18v18H13z'/%3E%3C/svg%3E")}
+.hero{padding-block:38px 35px;background:radial-gradient(ellipse at 14% 45%,#f2e6d1,transparent 64%),var(--cream)}
+.hero-grid,.split{display:grid;gap:24px;align-items:center}
+.hero-copy{position:relative}
+.eyebrow{display:inline-block;color:var(--navy-deep);font-weight:600;font-size:.9rem;border-block-end:1px solid var(--gold);padding-block-end:4px}
+.lead{max-width:36rem;color:var(--muted)}
+.actions{gap:8px;flex-wrap:wrap;margin-block:22px}
+.actions .button{padding-inline:12px;font-size:.87rem}
+.trust,.features,.after ul,.plan-card ul{display:grid;gap:10px 12px}
+.trust{grid-template-columns:repeat(2,minmax(0,1fr));font-size:.84rem;color:var(--ink)}
+.trust li,.features li,.after li,.plan-card li{display:flex;gap:8px;align-items:center}
+.trust .icon,.features .icon,.after .icon,.plan-card .icon{color:var(--navy)}
+.trust .icon{inline-size:20px;block-size:20px}
+.hero-visual,.phone-stage{position:relative;display:grid;place-items:center;isolation:isolate}
+.hero-visual{min-block-size:250px;padding:27px 16px 16px}
+.arch{position:absolute;inset:0;z-index:-1;clip-path:shape(from 0 100%, line to 0 47%, curve to 50% 0 with 0 24% / 31% 15%, curve to 100% 47% with 69% 15% / 100% 24%, line to 100% 100%, close);border-radius:50% 50% 24px 24px / 45% 45% 24px 24px}
+.hero-arch{inset-inline:6%;background:linear-gradient(150deg,var(--navy),var(--navy-deep));border-block-end:4px solid var(--gold)}
+.report{position:relative;width:min(100%,285px);background:var(--cream);border-radius:24px;box-shadow:var(--shadow);padding:13px 16px;line-height:1.45}
+.report-top,.report-note,.report dl div{display:flex;align-items:center;gap:8px}
+.report-top{font-weight:600;color:var(--navy);font-size:.82rem}
+.report-top small{display:block;color:var(--muted);font-size:.7rem}
+.report-name{display:block;font-size:1.13rem;margin-block:7px}
+.report-name span,.report dt{font-size:.82rem;color:var(--muted);font-weight:400}
+.report dl div{justify-content:space-between;border-block-start:1px solid var(--line);padding-block:4px;font-size:.86rem}
+.report-note{flex-wrap:wrap;margin-block-start:5px}
+.report-note small{font-size:.75rem}
+.stars{display:flex;color:#866311}
+.stars .icon{width:13px;height:13px;fill:var(--gold)}
+.report>.knot{position:absolute;inset-block-end:-5px;inset-inline-start:24px}
+.nodes,.steps{display:grid;gap:18px}
+.nodes li,.steps li{position:relative;min-width:0;background:var(--sand);padding:4px 24px 4px 8px}
+.nodes li>.knot,.steps li>.step-number{position:absolute;inset-inline-start:0;inset-block-start:12px}
+.nodes p,.about-grid>p{color:var(--muted)}
+.verse{padding:24px 6px;text-align:center;border-block:1px solid var(--gold);background:var(--cream)}
+.verse blockquote{font:400 clamp(1.65rem,5vw,2.65rem)/1.6 "Amiri Quran",serif;color:var(--navy-deep)}
+.verse figcaption{font-size:.9rem;color:var(--muted)}
+.snap{display:grid;grid-auto-flow:column;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;scrollbar-width:thin;gap:14px;padding:5px 4px 12px}
+.snap>*{scroll-snap-align:start}
+.course-list{grid-auto-columns:86%}
+.course{position:relative;isolation:isolate;display:grid;justify-items:start;align-content:start;gap:8px;min-height:285px;padding:76px 18px 22px}
+.course-arch{background:#e4eafb;clip-path:shape(from 0 100%, line to 0 40%, curve to 50% 0 with 0 18% / 31% 13%, curve to 100% 40% with 69% 13% / 100% 18%, line to 100% 100%, close)}
+.course:nth-child(2) .course-arch{background:var(--sage)}
+.course:nth-child(3) .course-arch{background:var(--sand)}
+.course>.icon{color:var(--navy);width:30px;height:30px}
+.course a{display:inline-flex;align-items:center;gap:4px;min-block-size:44px;font-weight:600;font-size:.9rem}
+.course a .icon{width:18px;height:18px}
+.dots{display:flex;justify-content:center}
+.dots button{position:relative;inline-size:44px;block-size:44px;background:none;border:0}
+.dots button::after{content:"";position:absolute;inset:17px;border:1px solid var(--navy);border-radius:50%}
+.dots [aria-current=true]::after{background:var(--navy)}
+.features{margin-block-end:22px}
+.features li{padding-block:5px;border-block-end:1px solid var(--line);background:var(--sand)}
+.phone-stage{min-height:360px;padding:18px 6px 10px}
+.phone-arch{inset-inline:6%;background:#ded2bd}
+.phone{width:min(100%,235px);border:5px solid var(--navy-deep);border-radius:48% 48% 26px 26px / 14% 14% 26px 26px;background:var(--cream);padding:22px 11px 13px;display:grid;gap:7px;box-shadow:var(--shadow);font-size:.87rem;line-height:1.35}
+.phone small{font-size:.75rem}
+.phone-top{display:grid;justify-items:center;color:var(--navy-deep)}
+.phone-lesson,.phone-attendance,.phone-plan,.phone-report{border-radius:14px;background:white;padding:8px 10px}
+.phone-lesson{background:var(--navy-deep);color:white;display:grid}
+.attendance{display:flex;gap:6px;margin-block-start:6px}
+.attendance i{width:11px;height:11px;border-radius:50%;background:#437c62}
+.attendance i:nth-last-child(2){background:#a67717}
+.attendance i:last-child{background:#a92d2d}
+.phone-plan{display:grid;grid-template-columns:auto 1fr;gap:5px}
+.phone-plan strong{text-align:end}
+progress{grid-column:1/-1;inline-size:100%;block-size:7px;accent-color:var(--navy)}
+.phone-report{display:flex;align-items:center;gap:5px;background:var(--sage)}
+.phone-report .icon{width:19px;height:19px}
+.steps li{background:var(--cream);min-block-size:50px;display:flex;align-items:center;padding-inline-start:44px}
+.steps li>.step-number{inset-block-start:8px}
+.step-number{display:grid;place-items:center;background:var(--navy-deep);color:white;border-radius:50%;inline-size:34px;block-size:34px}
+.after{background:var(--sand);border-radius:24px;padding:16px;margin-block-start:24px}
+.after h3{margin-block-end:12px}
+.after ul{grid-template-columns:repeat(2,minmax(0,1fr));font-size:.85rem}
+.after .icon{width:18px;height:18px}
+fieldset{border:0;margin:0;padding:0;min-inline-size:0}
+legend{font-weight:600;margin-block-end:9px}
+.segments{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;background:var(--cream);border-radius:22px}
+.segments label,.course-choices label,.preferredTime-choices label{position:relative;cursor:pointer}
+.segments input,.choice input{position:absolute;opacity:0;inset-inline-start:12px;inset-block-start:10px}
+.segments span,.choice label span{display:flex;align-items:center;justify-content:center;gap:4px;min-block-size:48px;border-radius:16px;text-align:center;color:var(--navy-deep);line-height:1.25}
+.segments span{flex-direction:column;height:100%;padding:4px}
+.segments small{font-size:.68rem}
+.segments input:checked+span,.choice input:checked+span{background:var(--navy-deep);color:white}
+.segments input:focus-visible+span,.choice input:focus-visible+span{outline:3px solid var(--navy);outline-offset:2px}
+.plan-note{margin-block-start:13px;color:var(--muted);font-size:.9rem}
+.plan-card{background:var(--cream);padding:22px;border-radius:24px;box-shadow:var(--shadow)}
+.plan-card ul{margin-block:14px;font-size:.93rem}
+.voices{grid-auto-columns:87%;padding:6px 12px 12px}
+.bubble{position:relative;background:var(--sage);border-radius:20px 4px 20px 20px;padding:15px;display:grid;gap:9px;align-content:space-between}
+.bubble::before{content:"";position:absolute;inset-block-start:0;inset-inline-start:-7px;border:8px solid transparent;border-block-start-color:var(--sage)}
+.bubble figcaption{display:flex;align-items:center;justify-content:flex-end;gap:5px;color:var(--muted);font-size:.8rem}
+.bubble .icon{width:15px;height:15px;color:var(--navy)}
+.dark{background:var(--navy-deep);color:white}
+.dark .section-title{color:white}
+.dark .knot{box-shadow:0 0 0 5px var(--navy-deep)}
+.dark .wrap::before{content:"";display:block;width:65px;border-block-start:1px solid var(--gold);margin-block-end:18px}
+.dark p{max-width:43rem;margin-block:10px}
+.dark .button{margin-block-start:12px}
+.faq-list{background:var(--cream)}
+details{border-block-end:1px solid var(--line)}
+summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;min-block-size:56px;padding-block:8px;font-weight:600;color:var(--navy-deep);list-style:none}
+summary::-webkit-details-marker{display:none}
+details[open] summary .icon{transform:rotate(45deg)}
+details p{padding-block-end:14px;color:var(--muted)}
+.registration{position:relative;background:var(--cream);padding:clamp(14px,4vw,34px);border-radius:28px;box-shadow:var(--shadow)}
+.progress{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-block-end:20px}
+.progress li{display:flex;align-items:center;gap:6px;padding-block:6px;border-block-end:2px solid var(--line);font-size:.86rem;color:var(--muted)}
+.progress li[aria-current]{border-color:var(--navy);color:var(--navy-deep);font-weight:600}
+.progress span{display:grid;place-items:center;border-radius:50%;background:var(--sand);inline-size:27px;block-size:27px}
+.field-grid{display:grid;gap:11px}
+.field,.choice{margin-block-end:14px}
+.field label{display:block;font-weight:600;margin-block-end:3px}
+.field input,.field textarea{width:100%;min-height:48px;border:1px solid var(--line);border-radius:14px;padding:8px 10px;background:white;color:var(--ink)}
+.field textarea{min-height:92px;resize:vertical}
+.field small{color:var(--muted)}
+.field input[aria-invalid=true],.choice input[aria-invalid=true]+span{border-color:#a41d32}
+.field-error,.save-error{color:#a41d32;font-size:.89rem}
+.course-choices,.preferredTime-choices{display:grid;gap:6px}
+.course-choices{grid-template-columns:repeat(3,minmax(0,1fr))}
+.preferredTime-choices{grid-template-columns:repeat(4,minmax(0,1fr))}
+.choice label span{border:1px solid var(--line);background:white;height:100%;padding:6px 2px;font-size:.83rem}
+.course-choices span{flex-direction:column;min-block-size:70px}
+.choice .icon{width:20px;height:20px}
+.form-actions{display:flex;gap:8px;flex-wrap:wrap}
+.honeypot{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%)}
+.end-knot{position:absolute;inset-block-end:-6px;inset-inline-start:26px}
+.end-knot .icon{display:none}
+.registration:has(.success:not([hidden])) .end-knot{inline-size:25px;block-size:25px;color:white;inset-block-end:-12px}
+.registration:has(.success:not([hidden])) .end-knot .icon{display:block;width:15px;height:15px}
+.success,.save-error{margin-block-start:15px;padding:12px;border-radius:14px}
+.success{background:var(--sage)}
+.success .button,.save-error .button{margin-block-start:8px}
+footer{background:var(--ink);color:white;padding-block:24px}
+.footer-inner,.footer-links{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px}
+footer a,footer .brand{color:white}
+footer .brand img{mix-blend-mode:normal}
+.footer-links a{display:inline-flex;align-items:center;gap:5px;min-block-size:44px}
+.footer-links .icon{width:18px;height:18px}
+.floating-wa{position:fixed;inset-inline-end:14px;inset-block-end:max(16px,env(safe-area-inset-bottom));z-index:5;width:52px;padding:0;background:var(--wa);color:white;box-shadow:var(--shadow)}
+.motion [data-reveal]:not(.revealed){opacity:0;transform:translateY(12px)}
+[data-reveal]{transition:opacity 400ms ease-out,transform 400ms ease-out}
+@media(min-width:768px){
+  .wrap{width:min(100% - 72px,1140px)}
+  .hero{padding-block:65px}
+  .hero-grid,.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:42px}
+  .hero-visual{min-height:360px;padding-block:60px 36px}
+  .report{padding:17px 20px}
+  .nodes,.steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .nodes li,.steps li{padding-block:30px 0;padding-inline:0;background:transparent}
+  .nodes li>.knot,.steps li>.step-number{inset-block-start:0}
+  .steps li{padding-block-start:45px}
+  .steps li>.step-number{transform:translateY(-11px)}
+  .after ul{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .course-list,.voices{grid-auto-flow:row;overflow:visible}
+  .course-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .course{padding:90px 22px 24px}
+  .dots{display:none}
+  .voices{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .registration,.faq-list{max-width:760px}
+}
+@media(min-width:1050px){
+  .desktop-nav{display:flex;align-items:center;gap:clamp(10px,1.6vw,23px)}
+  .desktop-nav a{display:flex;align-items:center;min-height:48px;text-decoration:none;font-size:.92rem;font-weight:600;white-space:nowrap}
+  .header-actions>.outline{display:inline-flex}
+  .header .primary{padding-inline:17px;font-size:.94rem}
+  .menu-toggle{display:none}
+  .hero-grid{grid-template-columns:1.15fr .85fr;gap:68px}
+  .hero-visual{min-height:415px}
+  .trust{grid-template-columns:repeat(4,auto);justify-content:start;gap:14px}
+  .course{min-height:330px;padding:113px 30px 24px}
+  .voices{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(hover:hover) and (pointer:fine){
+  .course{transition:transform .2s ease-out}
+  .course:hover{transform:translateY(-5px)}
+  .button:hover{box-shadow:var(--shadow)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  .motion [data-reveal]:not(.revealed){opacity:1;transform:none}
+  .course:hover{transform:none}
+}
+</style>
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <a class="logo" href="#"><img src="logo.jpg" alt="شعار صلة"><span><b>صلة</b><small>أكاديمية القرآن للأطفال</small></span></a>
-    <nav class="menu" id="menu" aria-label="أقسام الصفحة">
-      <a href="#about">عن الأكاديمية</a><a href="#courses">دوراتنا</a><a href="#how">كيف تنضمين</a><a href="#plans">الباقات</a><a href="#voices">آراء الأمهات</a><a href="#faq">الأسئلة الشائعة</a>
-    </nav>
-    <div class="cta"><a class="btn ghost sm" href="https://rattelquran.github.io/silah-portal/">دخول البوابة</a><a class="btn red sm" href="#register">حصة مجانية</a></div>
-    <button class="burger" id="burger" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="menu">☰</button>
+
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6v15M3 4c4-1 7 0 9 2 2-2 5-3 9-2v15c-4-1-7 0-9 2-2-2-5-3-9-2z"/></symbol><symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11v1a7 7 0 0014 0v-1m-7 8v3m-3 0h6"/></symbol><symbol id="i-arabic" viewBox="0 0 24 24"><path d="M16 7c-2-5-9-4-9 1 0 2 2 3 5 3h4c-5 0-10 2-10 6 0 3 4 5 11 3"/></symbol><symbol id="i-link" viewBox="0 0 24 24"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="12" r="3"/><path d="M8 12h8"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-report" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6m-6 4h6m-6 4h4"/></symbol><symbol id="i-meet" viewBox="0 0 24 24"><rect x="3" y="6" width="12" height="12" rx="2"/><path d="m15 10 6-3v10l-6-3"/></symbol><symbol id="i-headphones" viewBox="0 0 24 24"><path d="M3 14v-2a9 9 0 0118 0v2"/><rect x="3" y="12" width="5" height="8" rx="2"/><rect x="16" y="12" width="5" height="8" rx="2"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4m8-4v4"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v5c0 5-4 8-8 10-4-2-8-5-8-10V6zm-3 9 2 2 4-4"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 16 3 21l5-1a9 9 0 10-4-4z"/><path d="M9 8c-2 2 3 7 5 7l2-2-3-1-1 1-2-2 1-1-1-2z"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.3.9-4.5 4.4 1 6.2-5.5-3-5.5 3 1-6.2L3 9.5l6.3-.9z"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M20 12H4m7-7-7 7 7 7"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol></svg>
+<header id="top" class="header">
+  <div class="wrap header-inner"><a class="brand" href="#"><img src="logo.jpg" width="49" height="49" alt=""><span><strong>صلة</strong><small>أكاديمية القرآن للأطفال</small></span></a><nav class="desktop-nav" aria-label="التنقل الرئيسي"><a href="#about">عن الأكاديمية</a><a href="#courses">دوراتنا</a><a href="#how">كيف تنضمين</a><a href="#portal">بوابة الأهل</a><a href="#faq">الأسئلة</a></nav>
+    <div class="header-actions"><a class="button outline" href="https://rattelquran.github.io/silah-portal/">دخول البوابة</a><a class="button primary" href="#register">حصة مجانية</a>
+    <button class="menu-toggle icon-button" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
   </div>
 </header>
-
-<main>
-<section class="hero">
-  <div class="wrap">
-    <div class="txt">
-      <span class="eyebrow">أكاديمية صلة لتعليم القرآن أونلاين</span>
-      <h1>رحلة طفلك مع القرآن تبدأ من هنا</h1>
-      <p class="lead">حصص أونلاين ممتعة وآمنة لتحفيظ القرآن والتجويد واللغة العربية، مع معلمين ومعلمات مؤهلين يفهمون طفلك ويصبرون عليه.</p>
-      <div class="btns"><a class="btn red" href="#register">ابدئي الآن – حصة تعريفية مجانية</a><a class="btn wa" data-wa="السلام عليكم، وصلت إليكم من موقع صلة وأرغب بحجز حصة تعريفية مجانية لطفلي" href="#">تواصلي عبر واتساب</a></div>
-      <div class="trust"><span>حلقة فردية لكل طفل</span><span>من عمر 4 سنوات</span><span>حصة 40 دقيقة</span><span>تقرير بعد كل حلقة</span></div>
+<dialog id="menu" class="menu" aria-label="القائمة">
+  <div class="menu-top"><a class="brand" href="#"><img src="logo.jpg" width="49" height="49" alt=""><span><strong>صلة</strong><small>أكاديمية القرآن للأطفال</small></span></a><button class="icon-button" type="button" id="menu-close" aria-label="إغلاق القائمة"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+  <nav aria-label="التنقل الرئيسي"><a href="#about">عن الأكاديمية</a><a href="#courses">دوراتنا</a><a href="#how">كيف تنضمين</a><a href="#portal">بوابة الأهل</a><a href="#faq">الأسئلة</a></nav><a class="button outline" href="https://rattelquran.github.io/silah-portal/">دخول البوابة</a><a class="button primary" href="#register">حصة مجانية</a>
+</dialog>
+<main id="main">
+<svg class="thread" aria-hidden="true"><path id="thread-path"/></svg>
+<section class="hero texture">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">أكاديمية صلة لتعليم القرآن أونلاين</p>
+      <h1>رحلة طفلك مع القرآن <span>تبدأ من هنا</span></h1>
+      <p class="lead">حلقات فردية أونلاين لتحفيظ القرآن والتجويد واللغة العربية، مع معلمات ومعلمين صبورين يعرفون طفلك باسمه، وتقرير يصلك بعد كل حلقة.</p>
+      <div class="actions"><a class="button primary" href="#register">احجزي حصة تعريفية مجانية</a><a class="button whatsapp" data-wa="السلام عليكم، أود الاستفسار عن أكاديمية صلة."><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>واتساب</a></div>
+      <ul class="trust"><li><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg><span>حلقة فردية</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span>من عمر 4 سنوات</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>حصة 40 دقيقة</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-report"/></svg><span>تقرير بعد كل حلقة</span></li></ul>
     </div>
-    <div class="badge"><img src="logo.jpg" alt=""><q>أن نغرس حب القرآن في قلب كل طفل، ليحفظ هويته أينما كان</q><small>هدف أكاديمية صلة</small></div>
-  </div>
-</section>
-
-<div class="wrap strip">
-  <div class="grid3">
-    <article class="card"><div class="ic">👧</div><h3>حلقة فردية لكل طفل</h3><p>حلقة طفلك معه وحده مع معلمته، تبدأ من مستواه وتسير بسرعته، فلا مقارنة ولا إحراج.</p></article>
-    <article class="card"><div class="ic">🎓</div><h3>معلمون ومعلمات مؤهلون</h3><p>صبورون مع الصغار، يعلّمون بالمحبة لا بالضغط.</p></article>
-    <article class="card"><div class="ic">📝</div><h3>تقرير بعد كل حلقة</h3><p>تصلك رسالة من المعلمة: ما حفظه طفلك، وما راجعه، والمطلوب للحلقة القادمة.</p></article>
-  </div>
-</div>
-
-<section class="about" id="about">
-  <div class="wrap">
-    <div>
-      <span class="eyebrow">من نحن</span>
-      <h2>القرآن بالرحمة، لا بالضغط</h2>
-      <p class="lead" style="margin-top:12px">أكاديمية صلة تعلّم القرآن الكريم أونلاين للأطفال من عمر 4 سنوات، في حلقات فردية تناسب أطفال العائلات المسلمة في الغربة، مع تصحيح التلاوة والتجويد والقراءة العربية. يبدأ كل طفل من مستواه ويتقدّم بسرعته، مع معلمة تعرفه باسمه وتتابع معك تقدّمه خطوة بخطوة.</p>
-      <ul><li>تعليم مباشر أونلاين بجودة عالية</li><li>مسار يناسب عمر طفلك ومستواه</li><li>متابعة فردية لكل طالب</li><li>بوابة لولي الأمر يتابع فيها الحضور والتقارير</li></ul>
-    </div>
-    <div class="goal"><h3>بوابة صلة لأولياء الأمور</h3><p>بعد الاشتراك تدخلين إلى بوابة صلة ببريدك، فترين موعد الحلقة القادمة بتوقيت بلدك، وحضور طفلك، وما تبقّى من باقته، وآخر تقارير المعلمة. وكل ولي أمر لا يرى إلا أبناءه.</p><a class="btn ghost sm" style="justify-self:start" href="https://rattelquran.github.io/silah-portal/">دخول البوابة</a></div>
-  </div>
-</section>
-
-<section class="alt" id="courses">
-  <div class="wrap">
-    <div class="head"><span class="eyebrow">دوراتنا التعليمية</span><h2>ثلاث دورات، ومسار واحد يناسب طفلك</h2></div>
-    <div class="grid3">
-      <article class="card"><div class="ic">📖</div><h3>حفظ القرآن الكريم</h3><p>تحفيظ كتاب الله بإتقان، بمنهجية تعتمد على التكرار والتصحيح والمراجعة والمتابعة الفردية، لحفظ راسخ وتلاوة صحيحة.</p><a class="btn ghost sm" style="justify-self:start" href="#register" data-course="quran">اطلبي حصة تعريفية</a></article>
-      <article class="card"><div class="ic">🎙️</div><h3>قواعد التجويد</h3><p>أحكام التلاوة والتجويد نظريًا وعمليًا، بأسلوب مبسّط وتدريجي يناسب عمر الطفل ومستواه.</p><a class="btn ghost sm" style="justify-self:start" href="#register" data-course="tajweed">اطلبي حصة تعريفية</a></article>
-      <article class="card"><div class="ic">✍️</div><h3>اللغة العربية</h3><p>القراءة والكتابة والتعبير بالعربية، بمنهج تدريجي تفاعلي يراعي الفروق بين الأطفال.</p><a class="btn ghost sm" style="justify-self:start" href="#register" data-course="arabic">اطلبي حصة تعريفية</a></article>
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="wrap">
-    <div class="head"><span class="eyebrow">كيف تنضمين؟</span><h2>ثلاث خطوات وتبدأ رحلة طفلك</h2></div>
-    <div class="grid3 steps">
-      <article class="card"><h3>اطلبي حصة تعريفية مجانية</h3><p>املئي النموذج أو راسلينا على واتساب، ونحدد معك موعد الحصة التعريفية.</p></article>
-      <article class="card"><h3>تعرّفي على المعلمة</h3><p>في الحصة التعريفية تتعرف المعلمة على طفلك ومستواه، وتتعرفين أنتِ على أسلوبها.</p></article>
-      <article class="card"><h3>ابدئي مع طفلك</h3><p>نرشّح لك الباقة المناسبة، ونرتّب موعدًا ثابتًا يناسب توقيت بلدك.</p></article>
-    </div>
-    <div class="head" style="margin:46px 0 22px"><h3 style="font-size:1.3rem">ماذا بعد الحصة التعريفية؟</h3></div>
-    <div class="grid4">
-      <article class="card"><div class="ic">📦</div><h3>الباقة المناسبة</h3><p>عدد الحلقات الأسبوعية الذي يناسب طفلك.</p></article>
-      <article class="card"><div class="ic">🔗</div><h3>رابط ثابت</h3><p>رابط Google Meet ثابت لحلقات طفلك، يفتح من المتصفح أو التطبيق.</p></article>
-      <article class="card"><div class="ic">🎧</div><h3>مكان هادئ</h3><p>ركن هادئ وسماعة إن أمكن يساعدان طفلك على التركيز.</p></article>
-      <article class="card"><div class="ic">⏰</div><h3>تبدأ الحلقة</h3><p>موعد ثابت كل أسبوع، وتقرير من المعلمة بعد كل حلقة.</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="alt" id="plans">
-  <div class="wrap">
-    <div class="head"><span class="eyebrow">الباقات</span><h2>اختاري عدد الحلقات الأسبوعية</h2><p class="lead">كل الباقات حلقات فردية مدة الواحدة 40 دقيقة. نحدد السعر معك بعد الحصة التعريفية حسب الباقة وبلدك.</p></div>
-    <div class="grid4">
-      <article class="card plan"><big>1</big><h3>حصة في الأسبوع</h3><ul><li>حصة 40 دقيقة</li><li>معلمة متخصصة</li><li>تقرير بعد كل حلقة</li></ul><a class="btn ghost sm" data-wa="السلام عليكم، أرغب بالاستفسار عن باقة حصة واحدة في الأسبوع" href="#">اسألي عنها</a></article>
-      <article class="card plan hot"><span class="tag">الأكثر طلبًا</span><big>2</big><h3>حصتان في الأسبوع</h3><ul><li>حصة 40 دقيقة</li><li>معلمة متخصصة</li><li>تقرير بعد كل حلقة</li></ul><a class="btn red sm" data-wa="السلام عليكم، أرغب بالاستفسار عن باقة حصتين في الأسبوع" href="#">اسألي عنها</a></article>
-      <article class="card plan"><big>3</big><h3>3 حصص في الأسبوع</h3><ul><li>حصة 40 دقيقة</li><li>معلمة متخصصة</li><li>تقرير بعد كل حلقة</li></ul><a class="btn ghost sm" data-wa="السلام عليكم، أرغب بالاستفسار عن باقة 3 حصص في الأسبوع" href="#">اسألي عنها</a></article>
-      <article class="card plan"><big>4</big><h3>4 حصص في الأسبوع</h3><ul><li>حصة 40 دقيقة</li><li>معلمة متخصصة</li><li>تقرير بعد كل حلقة</li></ul><a class="btn ghost sm" data-wa="السلام عليكم، أرغب بالاستفسار عن باقة 4 حصص في الأسبوع" href="#">اسألي عنها</a></article>
-    </div>
-    <p class="note">الحصة المعتذر عنها مسبقًا لا تُخصم من الباقة.</p>
-  </div>
-</section>
-
-<section id="voices">
-  <div class="wrap">
-    <div class="head"><span class="eyebrow">آراء الأمهات</span><h2>تجارب من أمهات وثقن بنا</h2></div>
-    <div class="grid4">
-      <figure class="card quote" style="margin:0"><p>أعجبتني المعلمة جدًا؛ أسلوبها جميل وصبورة.</p><small>ولية أمر</small></figure>
-      <figure class="card quote" style="margin:0"><p>أول منصة تهتم برأي الأهل والمتابعة.</p><small>ولية أمر</small></figure>
-      <figure class="card quote" style="margin:0"><p>فيه تقدم ملحوظ رغم وقت الدراسة، والطفل صار متعلقًا بالشيخ ويحبه جدًا.</p><small>ولية أمر</small></figure>
-      <figure class="card quote" style="margin:0"><p>خلال شهر ونصف لاحظنا حب الطفل للشيخ وطريقة التعليم، وصار يراجع السور السابقة دون أن ينساها.</p><small>ولية أمر</small></figure>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="moms"><span class="eyebrow" style="justify-self:start">لأمهات الغربة</span><h2>لأنك لستِ وحدك في هذه الرحلة</h2>
-      <p>نعرف كم هو صعب أن تربّي أطفالك بعيدًا عن الأهل، وأن تحرصي على تعليمهم لغتهم ودينهم في بيئة بعيدة عن جذورهم.</p>
-      <p>في صلة أنشأنا مساحة آمنة ودافئة، تشعرين فيها أن هناك من يقف بجانبك ويهتم بأطفالك كما تهتمين أنتِ.</p>
-      <a class="btn red" style="justify-self:start" href="#register">احجزي الحصة التعريفية</a></div>
-  </div>
-</section>
-
-<section class="alt" id="faq">
-  <div class="wrap faq">
-    <div class="head"><span class="eyebrow">الأسئلة الشائعة</span><h2>أسئلة تتكرر من الأمهات</h2></div>
-    <details><summary>ما هي أعمار الأطفال المقبولين؟</summary><p>نستقبل الأطفال من 4 سنوات، ولكل طفل حلقة فردية تناسب عمره ومستواه.</p></details>
-    <details><summary>ما هي مواعيد الحلقات؟</summary><p>نحدد موعد الحلقة معك حسب توقيت بلدك، ويبقى الموعد ثابتًا كل أسبوع.</p></details>
-    <details><summary>هل يمكنني إلغاء الاشتراك؟</summary><p>الاشتراك شهري ويُدفع مقدّمًا، ويمكن التوقف بعدم تجديد الشهر التالي.</p></details>
-    <details><summary>ما المنهج المستخدم؟</summary><p>نبدأ من مستوى الطفل: القراءة القرآنية للمبتدئين، ثم الحفظ مع تصحيح التلاوة والمراجعة والتثبيت، بأسلوب يناسب الصغار.</p></details>
-    <details><summary>هل الحلقات فردية أم جماعية؟</summary><p>حلقاتنا فردية: الطفل مع معلمته وحده، فلا أحد يسمع خطأه غيرها، ولا أحد يقارنه بغيره.</p></details>
-    <details><summary>كيف أتابع تقدّم طفلي؟</summary><p>تصلك رسالة من المعلمة بعد كل حلقة، وتستطيعين الدخول إلى بوابة صلة لترَي الحضور والباقة وآخر التقارير.</p></details>
-  </div>
-</section>
-
-<section id="register">
-  <div class="wrap">
-    <div class="head"><span class="eyebrow">سجّلي طفلك الآن</span><h2>احجزي حصة تعريفية مجانية</h2><p class="lead">نتعرّف فيها على طفلك ومستواه، ثم نتواصل معك على واتساب لتحديد الموعد.</p></div>
-    <div class="reg">
-      <form id="regForm" novalidate>
-        <div class="two">
-          <div class="field"><label for="r-parent">اسم ولي الأمر</label><input id="r-parent" autocomplete="name" maxlength="80" required></div>
-          <div class="field"><label for="r-child">اسم الطالب</label><input id="r-child" maxlength="80" required></div>
-        </div>
-        <div class="two">
-          <div class="field"><label for="r-age">عمر الطالب</label><input id="r-age" type="number" inputmode="numeric" min="4" max="18" required></div>
-          <div class="field"><label for="r-country">الدولة</label><input id="r-country" autocomplete="country-name" maxlength="60" required></div>
-        </div>
-        <div class="field"><label for="r-wa">رقم واتساب (مع مفتاح الدولة)</label><input id="r-wa" type="tel" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="+90 5xx xxx xx xx" maxlength="24" required></div>
-        <div class="two">
-          <div class="field"><label for="r-course">الدورة المطلوبة</label><select id="r-course" required><option value="">اختاري الدورة</option><option value="quran">القرآن الكريم</option><option value="tajweed">التجويد</option><option value="arabic">اللغة العربية</option></select></div>
-          <div class="field"><label for="r-time">الوقت المناسب للتواصل</label><select id="r-time" required><option value="">اختاري الوقت</option><option value="morning">صباحًا (8 - 12)</option><option value="noon">ظهرًا (12 - 4)</option><option value="evening">مساءً (4 - 8)</option><option value="night">ليلًا (8 - 11)</option></select></div>
-        </div>
-        <div class="field"><label for="r-notes">ملاحظات (اختياري)</label><textarea id="r-notes" rows="3" maxlength="600"></textarea></div>
-        <div class="hp" aria-hidden="true"><label for="r-web">اترك هذا الحقل فارغًا</label><input id="r-web" tabindex="-1" autocomplete="off"></div>
-        <p class="err" id="regErr" hidden></p>
-        <button class="btn red" id="regBtn" type="submit" style="width:100%">إرسال طلب التسجيل</button>
-        <p class="note">نستخدم بياناتك فقط للتواصل معك بخصوص الحصة التعريفية.</p>
-      </form>
-      <div class="done" id="regDone" hidden>
-        <div class="ok">✓</div><h3>وصلنا طلبك، جزاك الله خيرًا</h3>
-        <p class="lead">سنتواصل معك على واتساب في الوقت الذي اخترتِه. لو أردتِ تسريع الحجز، أرسلي لنا الطلب مباشرة:</p>
-        <a class="btn wa" id="regWa" href="#" target="_blank" rel="noopener">أرسلي الطلب على واتساب</a>
+    <div class="hero-visual">
+      <div class="arch hero-arch" aria-hidden="true"></div>
+      <div class="report">
+        <div class="report-top"><svg class="icon" aria-hidden="true"><use href="#i-report"/></svg><span>تقرير الحلقة <small>نموذج توضيحي</small></span></div>
+        <strong class="report-name">يوسف <span>· 7 سنوات</span></strong>
+        <dl><div><dt>الحفظ الجديد</dt><dd>سورة النبأ ١–١٠</dd></div><div><dt>الواجب</dt><dd>مراجعة ١–٥</dd></div></dl>
+        <div class="report-note"><span class="stars" aria-label="أربع نجوم" role="img"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span><small>أحسنت يا يوسف، واصل المراجعة.</small></div>
+        <span class="knot" data-thread aria-hidden="true"></span>
       </div>
     </div>
   </div>
 </section>
+<section class="band sand" id="connection"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>صلة بين ثلاثة</h2><ol class="nodes"><li><span class="knot" data-thread aria-hidden="true"></span><h3>طفلك</h3><p>حلقة فردية تبدأ من مستواه وتسير بسرعته، فلا مقارنة ولا إحراج</p></li><li><span class="knot" data-thread aria-hidden="true"></span><h3>معلمته</h3><p>مؤهّلة وصبورة، تعلّم بالمحبة لا بالضغط</p></li><li><span class="knot" data-thread aria-hidden="true"></span><h3>أنتِ</h3><p>رسالة بعد كل حلقة: ما حفظه، وما راجعه، والمطلوب للحلقة القادمة</p></li></ol></div></section><section class="band " id="about"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>القرآن بالرحمة، لا بالضغط</h2><div class="split about-grid"><p>أكاديمية صلة تعلّم القرآن الكريم أونلاين للأطفال من عمر 4 سنوات، في حلقات فردية تناسب أطفال العائلات المسلمة في الغربة، مع تصحيح التلاوة والتجويد والقراءة العربية. يبدأ كل طفل من مستواه ويتقدّم بسرعته، مع معلمة تعرفه باسمه وتتابع معك تقدّمه خطوة بخطوة.</p><figure class="verse"><blockquote>﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾</blockquote><figcaption>المزمل · ٤</figcaption></figure></div></div></section><section class="band " id="courses"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>دوراتنا</h2><div class="course-list snap" tabindex="0" aria-label="الدورات"><article class="course"><div class="arch course-arch" aria-hidden="true"></div><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><h3>حفظ القرآن الكريم</h3><p>تحفيظ بإتقان بالتكرار والتصحيح والمراجعة والمتابعة الفردية.</p><a href="#register" data-course="quran">اطلبي حصة تعريفية <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></article><article class="course"><div class="arch course-arch" aria-hidden="true"></div><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg><h3>قواعد التجويد</h3><p>أحكام التلاوة نظريًا وعمليًا بأسلوب مبسّط يناسب عمر الطفل.</p><a href="#register" data-course="tajweed">اطلبي حصة تعريفية <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></article><article class="course"><div class="arch course-arch" aria-hidden="true"></div><svg class="icon" aria-hidden="true"><use href="#i-arabic"/></svg><h3>اللغة العربية</h3><p>القراءة والكتابة والتعبير بمنهج تدريجي تفاعلي.</p><a href="#register" data-course="arabic">اطلبي حصة تعريفية <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></article></div><div class="dots" aria-label="اختيار بطاقة الدورة"><button type="button" aria-label="حفظ القرآن الكريم" aria-current="true"></button><button type="button" aria-label="قواعد التجويد" aria-current="false"></button><button type="button" aria-label="اللغة العربية" aria-current="false"></button></div></div></section><section class="band sand" id="portal"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>تتابعين طفلك من جوالك</h2>
+<div class="split portal-grid">
+  <div class="portal-copy"><ul class="features"><li><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>موعد الحلقة بتوقيت بلدك</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>الحضور والباقة</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-report"/></svg><span>تقرير بعد كل حلقة وتقرير شهري تعتمده المشرفة</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>حصص تعويضية عند التأجيل</span></li></ul><a class="button outline" href="https://rattelquran.github.io/silah-portal/">دخول بوابة الأهل</a></div>
+  <figure class="phone-stage">
+    <div class="arch phone-arch" aria-hidden="true"></div>
+    <div class="phone">
+      <div class="phone-top"><strong>بوابة الأهل</strong><small>نموذج توضيحي</small></div>
+      <div class="phone-lesson"><small>الحصة القادمة</small><strong>الثلاثاء 7:30 م</strong><small>بتوقيت تركيا</small></div>
+      <div class="phone-attendance"><small>الحضور</small><div class="attendance" role="img" aria-label="مثال للحضور: أربع حصص حضور وحصة مؤجلة وحصة غياب"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="phone-plan"><span>الباقة</span><strong>الحصة 6 من 8</strong><progress value="6" max="8" aria-label="الحصة 6 من 8"></progress></div>
+      <div class="phone-report"><svg class="icon" aria-hidden="true"><use href="#i-report"/></svg><strong>التقرير الشهري — نوفمبر</strong></div>
+    </div>
+  </figure>
+</div></div></section><section class="band " id="how"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>كيف تنضمين</h2><ol class="steps"><li><span class="step-number" data-thread>١</span><h3>اطلبي حصة تعريفية مجانية</h3></li><li><span class="step-number" data-thread>٢</span><h3>تعرّفي على المعلمة</h3></li><li><span class="step-number" data-thread>٣</span><h3>ابدئي مع طفلك</h3></li></ol><div class="after"><h3>ماذا بعد الحصة التعريفية؟</h3><ul><li><svg class="icon" aria-hidden="true"><use href="#i-report"/></svg><span>الباقة المناسبة</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-meet"/></svg><span>رابط Google Meet ثابت</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-headphones"/></svg><span>مكان هادئ وسماعة</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>موعد ثابت كل أسبوع</span></li></ul></div></div></section><section class="band sand" id="plans"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>باقات الحلقات</h2>
+<div class="split plan-grid">
+  <div><fieldset class="plan-selector"><legend>كم حلقة في الأسبوع؟</legend><div class="segments">
+  <label><input type="radio" name="plan" value="1" ><span>1</span></label><label><input type="radio" name="plan" value="2" checked><span>2<small>الأكثر طلبًا</small></span></label><label><input type="radio" name="plan" value="3" ><span>3</span></label><label><input type="radio" name="plan" value="4" ><span>4</span></label>
+  </div></fieldset><p class="plan-note">نحدّد السعر معك بعد الحصة التعريفية حسب الباقة وبلدك · الحصة المعتذر عنها مسبقًا لا تُخصم من الباقة</p></div>
+  <div class="plan-card"><h3 id="plan-title" aria-live="polite">حصتان في الأسبوع</h3><ul><li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>كل حصة 40 دقيقة</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span>معلمة متخصصة</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-report"/></svg><span>تقرير بعد كل حلقة</span></li></ul><a class="button whatsapp" data-wa="السلام عليكم، أود الاستفسار عن أكاديمية صلة."><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span id="plan-wa">اسألي عن باقة الحصتين</span></a></div>
+</div></div></section><section class="band " id="voices"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>تجارب من أمهات وثقن بنا</h2><div class="voices snap" tabindex="0" aria-label="آراء الأمهات"><figure class="bubble"><blockquote>أعجبتني المعلمة جدًا؛ أسلوبها جميل وصبورة.</blockquote><figcaption><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ولية أمر</figcaption></figure><figure class="bubble"><blockquote>أول منصة تهتم برأي الأهل والمتابعة.</blockquote><figcaption><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ولية أمر</figcaption></figure><figure class="bubble"><blockquote>فيه تقدم ملحوظ رغم وقت الدراسة، والطفل صار متعلقًا بالشيخ ويحبه جدًا.</blockquote><figcaption><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ولية أمر</figcaption></figure><figure class="bubble"><blockquote>خلال شهر ونصف لاحظنا حب الطفل للشيخ وطريقة التعليم، وصار يراجع السور السابقة دون أن ينساها.</blockquote><figcaption><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ولية أمر</figcaption></figure></div></div></section><section class="band dark texture" id="moms"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>لأنكِ لستِ وحدكِ في هذه الرحلة</h2><p>نعرف كم هو صعب أن تربّي أطفالك بعيدًا عن الأهل، وأن تحرصي على تعليمهم لغتهم ودينهم في بيئة بعيدة عن جذورهم.</p>
+      <p>في صلة أنشأنا مساحة آمنة ودافئة، تشعرين فيها أن هناك من يقف بجانبك ويهتم بأطفالك كما تهتمين أنتِ.</p><a class="button primary" href="#register">احجزي الحصة التعريفية</a></div></section><section class="band " id="faq"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>أسئلة تتكرر من الأمهات</h2><div class="faq-list"><details><summary>ما هي أعمار الأطفال المقبولين؟<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>نستقبل الأطفال من 4 سنوات، ولكل طفل حلقة فردية تناسب عمره ومستواه.</p></details><details><summary>ما هي مواعيد الحلقات؟<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>نحدد موعد الحلقة مع الأم حسب توقيت بلدها، ويبقى الموعد ثابتًا كل أسبوع.</p></details><details><summary>هل يمكنني إلغاء الاشتراك؟<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>الاشتراك شهري ويُدفع مقدّمًا، ويمكن التوقف بعدم تجديد الشهر التالي.</p></details><details><summary>ما المنهج المستخدم؟<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>نبدأ من مستوى الطفل: القراءة القرآنية للمبتدئين، ثم الحفظ مع تصحيح التلاوة والمراجعة والتثبيت، بأسلوب يناسب الصغار.</p></details><details><summary>هل الحلقات فردية أم جماعية؟<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>حلقاتنا فردية: الطفل مع معلمته وحده، فلا أحد يسمع خطأه غيرها، ولا أحد يقارنه بغيره.</p></details></div></div></section><section class="band sand" id="register"><div class="wrap" data-reveal><h2 class="section-title"><span class="knot" data-thread aria-hidden="true"></span>احجزي حصة تعريفية مجانية</h2>
+<div class="registration">
+  <ol class="progress" aria-label="خطوات التسجيل"><li aria-current="step"><span>١</span>عن طفلك</li><li><span>٢</span>للتواصل معك</li></ol>
+  <form id="registration-form" novalidate>
+    <div id="child-step">
+      <div class="field-grid"><div class="field"><label for="r-studentName">اسم الطالب</label><input id="r-studentName" name="studentName" aria-describedby="err-studentName" required maxlength="80"><p class="field-error" id="err-studentName" hidden></p></div><div class="field"><label for="r-studentAge">العمر</label><input id="r-studentAge" name="studentAge" aria-describedby="err-studentAge" required type="number" min="4" max="18" step="1" inputmode="numeric"><p class="field-error" id="err-studentAge" hidden></p></div></div>
+      <fieldset class="choice"><legend>الدورة</legend><div class="course-choices"><label><input type="radio" required name="course" value="quran" aria-describedby="err-course"><span><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>حفظ القرآن الكريم</span></label><label><input type="radio" required name="course" value="tajweed" aria-describedby="err-course"><span><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg>قواعد التجويد</span></label><label><input type="radio" required name="course" value="arabic" aria-describedby="err-course"><span><svg class="icon" aria-hidden="true"><use href="#i-arabic"/></svg>اللغة العربية</span></label></div><p class="field-error" id="err-course" hidden></p></fieldset>
+      <fieldset class="choice"><legend>الوقت المناسب للتواصل</legend><div class="preferredTime-choices"><label><input type="radio" required name="preferredTime" value="morning" aria-describedby="err-preferredTime"><span>صباحًا</span></label><label><input type="radio" required name="preferredTime" value="noon" aria-describedby="err-preferredTime"><span>ظهرًا</span></label><label><input type="radio" required name="preferredTime" value="evening" aria-describedby="err-preferredTime"><span>مساءً</span></label><label><input type="radio" required name="preferredTime" value="night" aria-describedby="err-preferredTime"><span>ليلًا</span></label></div><p class="field-error" id="err-preferredTime" hidden></p></fieldset>
+      <div class="form-actions"><button class="button primary" type="button" id="next">التالي <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+    </div>
+    <div id="contact-step" hidden>
+      <div class="field-grid"><div class="field"><label for="r-parentName">اسم ولي الأمر</label><input id="r-parentName" name="parentName" aria-describedby="err-parentName" required maxlength="80" autocomplete="name"><p class="field-error" id="err-parentName" hidden></p></div><div class="field"><label for="r-country">الدولة</label><input id="r-country" name="country" aria-describedby="err-country" required maxlength="60" autocomplete="country-name"><p class="field-error" id="err-country" hidden></p></div></div>
+      <div class="field"><label for="r-whatsapp">رقم واتساب</label><input id="r-whatsapp" name="whatsapp" aria-describedby="err-whatsapp hint-whatsapp" required type="tel" dir="ltr" maxlength="24" autocomplete="tel"><small id="hint-whatsapp">اكتبي الرقم مع رمز الدولة، مثل ‎+90.</small><p class="field-error" id="err-whatsapp" hidden></p></div>
+      <div class="field"><label for="r-notes">ملاحظات</label><textarea id="r-notes" name="notes" maxlength="600" aria-describedby="err-notes"></textarea><p class="field-error" id="err-notes" hidden></p></div>
+      <div class="form-actions"><button class="button primary" type="submit" id="send">إرسال طلب التسجيل</button><button class="button outline" type="button" id="back">السابق</button></div>
+    </div>
+    <div class="honeypot" aria-hidden="true"><label for="r-web">اترك هذا الحقل فارغًا</label><input id="r-web" tabindex="-1" autocomplete="off"></div>
+  </form>
+  <div id="save-error" class="save-error" hidden role="alert"><p>تعذّر إرسال الطلب. يمكنكِ إرساله عبر واتساب.</p><a class="button whatsapp" data-wa="السلام عليكم، أود الاستفسار عن أكاديمية صلة."><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>إرسال الطلب عبر واتساب</a></div>
+  <div id="success" class="success" hidden tabindex="-1" aria-live="polite"><h3><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> وصلنا طلبك، جزاكِ الله خيرًا</h3><a class="button whatsapp" data-wa="السلام عليكم، أود الاستفسار عن أكاديمية صلة."><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>متابعة الطلب عبر واتساب</a></div>
+  <span class="knot end-knot" data-thread aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+</div></div></section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <a class="logo" href="#" style="color:#fff"><img src="logo.jpg" alt="" style="mix-blend-mode:normal"><span><b style="color:#fff">صلة</b><small style="color:#C9CEDB">أكاديمية القرآن للأطفال</small></span></a>
-    <span>واتساب: <a data-wa="السلام عليكم، أرغب بالاستفسار عن أكاديمية صلة" href="#" dir="ltr" id="waNum"></a> · إنستغرام: <a href="https://www.instagram.com/silahkids/" target="_blank" rel="noopener" dir="ltr">@silahkids</a></span>
-    <span>© <span id="yr"></span> أكاديمية صلة · <a href="https://rattelquran.github.io/silah-portal/">بوابة صلة</a></span>
-  </div>
-</footer>
-<a class="btn wa float" data-wa="السلام عليكم، أرغب بالاستفسار عن أكاديمية صلة" href="#" aria-label="تواصلي معنا عبر واتساب">💬 واتساب</a>
-
+<footer><div class="wrap footer-inner"><a class="brand" href="#"><img src="logo.jpg" width="49" height="49" alt=""><span><strong>صلة</strong><small>أكاديمية القرآن للأطفال</small></span></a><div class="footer-links"><a data-wa="السلام عليكم، أود الاستفسار عن أكاديمية صلة."><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><bdi id="wa-number"></bdi></a><a href="https://www.instagram.com/silahkids/"><bdi>@silahkids</bdi></a><a href="https://rattelquran.github.io/silah-portal/">بوابة الأهل</a></div><small>© <span id="year"></span> أكاديمية صلة</small></div></footer>
+<a class="floating-wa" data-wa="السلام عليكم، أود الاستفسار عن أكاديمية صلة." aria-label="تواصلي معنا عبر واتساب"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg></a>
 <script type="module">
-// The only contact number: change it here and every WhatsApp button follows.
 const WHATSAPP = '905395224329';
 const FIREBASE = { apiKey: 'AIzaSyASiyRbue4AANq0CSBbJDPZF9tD83KpVcE', authDomain: 'silah-portal.firebaseapp.com', projectId: 'silah-portal', storageBucket: 'silah-portal.firebasestorage.app', messagingSenderId: '596282595018', appId: '1:596282595018:web:4b4ad3751783c77b944633' };
-const COURSES = { quran: 'القرآن الكريم', tajweed: 'التجويد', arabic: 'اللغة العربية' };
 const TIMES = { morning: 'صباحًا (8 - 12)', noon: 'ظهرًا (12 - 4)', evening: 'مساءً (4 - 8)', night: 'ليلًا (8 - 11)' };
+const COURSES = {"quran": "حفظ القرآن الكريم", "tajweed": "قواعد التجويد", "arabic": "اللغة العربية"};
 const $ = id => document.getElementById(id);
-const wa = text => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text);
+const wa = message => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(message);
+document.querySelectorAll('[data-wa]').forEach(link => {
+  link.href = wa(link.dataset.wa);
+  link.target = '_blank';
+  link.rel = 'noopener';
+});
+$('wa-number').textContent = '+' + WHATSAPP;
+$('year').textContent = new Date().getFullYear();
 
-document.querySelectorAll('[data-wa]').forEach(a => { a.href = wa(a.dataset.wa); a.target = '_blank'; a.rel = 'noopener'; });
-$('waNum').textContent = '+' + WHATSAPP;
-$('yr').textContent = new Date().getFullYear();
-const menu = $('menu'), burger = $('burger');
-burger.onclick = () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); };
-menu.querySelectorAll('a').forEach(a => a.onclick = () => { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); });
-document.querySelectorAll('[data-course]').forEach(a => a.addEventListener('click', () => { $('r-course').value = a.dataset.course; }));
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+const desktop = matchMedia('(min-width:1050px)');
+const menu = $('menu');
+const menuToggle = document.querySelector('.menu-toggle');
+menuToggle.addEventListener('click', () => {
+  menu.showModal();
+  menuToggle.setAttribute('aria-expanded', 'true');
+  $('menu-close').focus();
+});
+$('menu-close').addEventListener('click', () => menu.close());
+menu.addEventListener('close', () => menuToggle.setAttribute('aria-expanded', 'false'));
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.close()));
+desktop.addEventListener('change', event => {
+  if (event.matches && menu.open) menu.close();
+});
 
-let fb = null;
-async function db() {
-  if (fb) return fb;
-  const base = 'https://www.gstatic.com/firebasejs/10.12.2/';
-  const [{ initializeApp }, F] = await Promise.all([import(base + 'firebase-app.js'), import(base + 'firebase-firestore.js')]);
-  fb = { F, db: F.getFirestore(initializeApp(FIREBASE)) };
-  return fb;
-}
-
-$('regForm').onsubmit = async e => {
-  e.preventDefault();
-  const err = $('regErr'); err.hidden = true;
-  const v = {
-    parentName: $('r-parent').value.trim(), studentName: $('r-child').value.trim(), studentAge: Number($('r-age').value),
-    country: $('r-country').value.trim(), whatsapp: $('r-wa').value.trim(), course: $('r-course').value, preferredTime: $('r-time').value, notes: $('r-notes').value.trim(),
-  };
-  const bad = !v.parentName ? 'اكتبي اسم ولي الأمر.' : !v.studentName ? 'اكتبي اسم الطالب.'
-    : !(v.studentAge >= 4 && v.studentAge <= 18) ? 'نستقبل الأطفال من عمر 4 سنوات. اكتبي العمر بالأرقام.'
-    : !v.country ? 'اكتبي الدولة.' : (v.whatsapp.replace(/\D/g, '').length < 8 || !/^[+\d\s\-()]+$/.test(v.whatsapp)) ? 'اكتبي رقم واتساب صحيحًا مع مفتاح الدولة.'
-    : !COURSES[v.course] ? 'اختاري الدورة.' : !TIMES[v.preferredTime] ? 'اختاري الوقت المناسب للتواصل.' : '';
-  if (bad) { err.textContent = bad; err.hidden = false; return; }
-  const msg = `السلام عليكم، أرغب بحجز حصة تعريفية مجانية:\nولي الأمر: ${v.parentName}\nالطالب: ${v.studentName} (${v.studentAge} سنوات)\nالدولة: ${v.country}\nالدورة: ${COURSES[v.course]}\nالوقت المناسب: ${TIMES[v.preferredTime]}${v.notes ? '\nملاحظات: ' + v.notes : ''}`;
-  $('regWa').href = wa(msg);
-  if ($('r-web').value) { showDone(); return; }   // bots fill the hidden field: pretend success, save nothing
-  const btn = $('regBtn'); btn.disabled = true; btn.textContent = 'جارٍ الإرسال…';
-  try {
-    const { F, db: d } = await db();
-    await F.addDoc(F.collection(d, 'registrations'), { ...v, status: 'new', source: 'site', at: Date.now() });
-    showDone();
-  } catch (x) {
-    console.error(x);
-    err.innerHTML = 'تعذّر حفظ الطلب الآن. أرسليه لنا على واتساب بضغطة واحدة: <a href="' + wa(msg) + '" target="_blank" rel="noopener">إرسال على واتساب</a>';
-    err.hidden = false; btn.disabled = false; btn.textContent = 'إرسال طلب التسجيل';
+const main = $('main');
+const path = $('thread-path');
+const header = document.querySelector('.header');
+const points = [...main.querySelectorAll('[data-thread]')];
+let length = 0;
+let frame = 0;
+function renderProgress() {
+  const end = innerHeight * .84 - main.getBoundingClientRect().top;
+  if (reduced.matches || end >= main.offsetHeight - 20 || !length) {
+    path.style.strokeDashoffset = '0';
+    return;
   }
+  // The curve can travel sideways across several knots on the same level.
+  // Find the visible length along the curve instead of mapping it to page height.
+  let low = 0;
+  let high = length;
+  for (let i = 0; i < 18; i++) {
+    const middle = (low + high) / 2;
+    if (path.getPointAtLength(middle).y <= end) low = middle;
+    else high = middle;
+  }
+  path.style.strokeDashoffset = String(length - low);
+}
+function measureThread() {
+  const mainBox = main.getBoundingClientRect();
+  const coordinates = points.map(knot => {
+    const box = knot.getBoundingClientRect();
+    return [box.left + box.width / 2 - mainBox.left, box.top + box.height / 2 - mainBox.top - (
+      knot.closest('[data-reveal]:not(.revealed)') && !reduced.matches ? 12 : 0
+    )];
+  });
+  const [firstX, firstY] = coordinates[0];
+  let drawing = 'M ' + firstX + ' ' + firstY;
+  for (let i = 1; i < coordinates.length; i++) {
+    const [x0, y0] = coordinates[i - 1];
+    const [x1, y1] = coordinates[i];
+    const gap = Math.max(0, y1 - y0);
+    const edge = innerWidth - Math.max(9, (innerWidth - 1140) / 2 - 19);
+    if (gap > 90) {
+      drawing += ` C ${x0} ${y0 + gap * .32}, ${edge} ${y0 + gap * .17}, ${edge} ${y0 + gap * .48}`;
+      drawing += ` S ${x1} ${y1 - gap * .18}, ${x1} ${y1}`;
+    } else {
+      drawing += ` C ${x0} ${y0 + gap * .6}, ${x1} ${y1 - gap * .6}, ${x1} ${y1}`;
+    }
+  }
+  path.setAttribute('d', drawing);
+  length = path.getTotalLength();
+  path.style.strokeDasharray = reduced.matches ? 'none' : String(length);
+  renderProgress();
+}
+function onScroll() {
+  if (frame) return;
+  frame = requestAnimationFrame(() => {
+    frame = 0;
+    header.classList.toggle('compact', scrollY > 40);
+    renderProgress();
+  });
+}
+addEventListener('scroll', onScroll, { passive: true });
+new ResizeObserver(measureThread).observe(main);
+document.fonts.ready.then(measureThread);
+reduced.addEventListener('change', measureThread);
+
+document.documentElement.classList.add('motion');
+const reveals = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    entry.target.classList.add('revealed');
+    reveals.unobserve(entry.target);
+  }
+}, { rootMargin: '0px 0px 32px 0px' });
+document.querySelectorAll('[data-reveal]').forEach(element => reveals.observe(element));
+main.addEventListener('transitionend', event => {
+  if (event.propertyName === 'transform' && event.target.hasAttribute('data-reveal')) measureThread();
+});
+new IntersectionObserver(([entry]) => {
+  document.querySelector('.floating-wa').hidden = entry.isIntersecting;
+}).observe($('register').querySelector('.registration'));
+
+const courseList = document.querySelector('.course-list');
+const dots = [...document.querySelectorAll('.dots button')];
+const cards = [...courseList.children];
+dots.forEach((dot, index) => dot.addEventListener('click', () => {
+  const difference = cards[index].getBoundingClientRect().right - cards[0].getBoundingClientRect().right;
+  courseList.scrollTo({ left: difference, behavior: reduced.matches ? 'instant' : 'smooth' });
+}));
+courseList.addEventListener('scroll', () => {
+  const edge = courseList.getBoundingClientRect().right;
+  const distances = cards.map(card => Math.abs(card.getBoundingClientRect().right - edge));
+  const active = distances.indexOf(Math.min(...distances));
+  dots.forEach((dot, index) => dot.setAttribute('aria-current', String(index === active)));
+}, { passive: true });
+
+const planTitle = $('plan-title');
+const planLabel = $('plan-wa');
+const planNames = ['حصة واحدة', 'حصتان', '3 حصص', '4 حصص'];
+const planObjects = ['حصة واحدة', 'الحصتين', '3 حصص', '4 حصص'];
+function updatePlan() {
+  const index = Number(document.querySelector('input[name="plan"]:checked').value) - 1;
+  planTitle.textContent = planNames[index] + ' في الأسبوع';
+  planLabel.textContent = 'اسألي عن باقة ' + planObjects[index];
+  planLabel.closest('a').href = wa('السلام عليكم، أود الاستفسار عن باقة ' + planObjects[index] + ' في الأسبوع.');
+}
+document.querySelector('.plan-selector').addEventListener('change', updatePlan);
+updatePlan();
+
+const form = $('registration-form');
+const stepMarkers = [...document.querySelectorAll('.progress li')];
+const childStep = $('child-step');
+const contactStep = $('contact-step');
+const send = $('send');
+const success = $('success');
+const saveError = $('save-error');
+function showStep(step, focus = true) {
+  childStep.hidden = step !== 0;
+  contactStep.hidden = step !== 1;
+  stepMarkers.forEach((marker, index) => {
+    if (index === step) marker.setAttribute('aria-current', 'step');
+    else marker.removeAttribute('aria-current');
+  });
+  if (focus) (step === 0 ? $('r-studentName') : $('r-parentName')).focus();
+}
+function payload() {
+  const values = new FormData(form);
+  const value = name => String(values.get(name) ?? '').trim();
+  return {
+    parentName: value('parentName'),
+    studentName: value('studentName'),
+    studentAge: Number(value('studentAge')),
+    country: value('country'),
+    whatsapp: value('whatsapp'),
+    course: value('course'),
+    preferredTime: value('preferredTime'),
+    notes: value('notes'),
+    status: 'new',
+    source: 'site',
+    at: Date.now()
+  };
+}
+const errors = {
+  studentName: 'أدخلي اسم الطالب (من 1 إلى 80 حرفًا).',
+  studentAge: 'أدخلي العمر بالسنوات من 4 إلى 18.',
+  course: 'اختاري الدورة.',
+  preferredTime: 'اختاري الوقت المناسب للتواصل.',
+  parentName: 'أدخلي اسم ولي الأمر (من 1 إلى 80 حرفًا).',
+  country: 'أدخلي اسم الدولة (حتى 60 حرفًا).',
+  whatsapp: 'أدخلي رقم واتساب مع رمز الدولة (من 8 إلى 24 حرفًا).',
+  notes: 'اختصري الملاحظات إلى 600 حرف أو أقل.'
 };
-function showDone() { $('regForm').hidden = true; $('regDone').hidden = false; $('regDone').scrollIntoView({ block: 'center' }); }
+const childFields = ['studentName', 'studentAge', 'course', 'preferredTime'];
+const contactFields = ['parentName', 'country', 'whatsapp', 'notes'];
+function setError(name, invalid) {
+  const error = $('err-' + name);
+  error.hidden = !invalid;
+  error.textContent = invalid ? errors[name] : '';
+  const controls = [...form.querySelectorAll('[name="' + name + '"]')];
+  controls.forEach(control => {
+    if (invalid) control.setAttribute('aria-invalid', 'true');
+    else control.removeAttribute('aria-invalid');
+  });
+  return controls[0];
+}
+function validate(values, fields) {
+  const invalid = {
+    studentName: !values.studentName || values.studentName.length > 80,
+    studentAge: !Number.isInteger(values.studentAge) || values.studentAge < 4 || values.studentAge > 18,
+    course: !Object.hasOwn(COURSES, values.course),
+    preferredTime: !Object.hasOwn(TIMES, values.preferredTime),
+    parentName: !values.parentName || values.parentName.length > 80,
+    country: !values.country || values.country.length > 60,
+    whatsapp: values.whatsapp.length < 8 || values.whatsapp.length > 24 || !/^[+\d\s\-()]+$/.test(values.whatsapp) || values.whatsapp.replace(/\D/g, '').length < 8,
+    notes: values.notes.length > 600
+  };
+  let firstInvalid;
+  for (const name of fields) {
+    const control = setError(name, invalid[name]);
+    if (invalid[name] && !firstInvalid) firstInvalid = control;
+  }
+  if (firstInvalid && fields === childFields && childStep.hidden) showStep(0, false);
+  firstInvalid?.focus();
+  return !firstInvalid;
+}
+form.addEventListener('input', event => {
+  const name = event.target.name;
+  if (Object.hasOwn(errors, name) && !$('err-' + name).hidden) setError(name, false);
+});
+$('next').addEventListener('click', () => {
+  if (validate(payload(), childFields)) showStep(1);
+});
+$('back').addEventListener('click', () => {
+  saveError.hidden = true;
+  showStep(0);
+});
+document.querySelectorAll('[data-course]').forEach(link => link.addEventListener('click', () => {
+  if (send.disabled || !success.hidden) return;
+  form.querySelector('[name="course"][value="' + link.dataset.course + '"]').checked = true;
+  setError('course', false);
+  saveError.hidden = true;
+  showStep(0, false);
+}));
+function showSuccess(summary) {
+  success.querySelector('a').href = wa(summary);
+  saveError.hidden = true;
+  form.hidden = true;
+  success.hidden = false;
+  stepMarkers[1].removeAttribute('aria-current');
+  success.focus();
+}
+async function saveRegistration(values) {
+  const base = 'https://www.gstatic.com/firebasejs/10.12.2/';
+  const [{ initializeApp, getApps }, { addDoc, collection, getFirestore }] = await Promise.all([
+    import(base + 'firebase-app.js'),
+    import(base + 'firebase-firestore.js')
+  ]);
+  const app = getApps()[0] ?? initializeApp(FIREBASE);
+  await addDoc(collection(getFirestore(app), 'registrations'), values);
+}
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (send.disabled) return;
+  if ($('r-web').value) {
+    showSuccess('السلام عليكم، أود الاستفسار عن الحصة التعريفية.');
+    return;
+  }
+  const values = payload();
+  if (!childStep.hidden) {
+    $('next').click();
+    return;
+  }
+  if (!validate(values, childFields) || !validate(values, contactFields)) return;
+  const summary = [
+    'السلام عليكم، أرغب بحجز حصة تعريفية مجانية:',
+    'ولي الأمر: ' + values.parentName,
+    'الطالب: ' + values.studentName + ' (' + values.studentAge + ' سنوات)',
+    'الدولة: ' + values.country,
+    'رقم واتساب: ' + values.whatsapp,
+    'الدورة: ' + COURSES[values.course],
+    'الوقت المناسب: ' + TIMES[values.preferredTime],
+    values.notes && 'ملاحظات: ' + values.notes
+  ].filter(Boolean).join('\n');
+  send.disabled = true;
+  $('back').disabled = true;
+  send.textContent = 'جارٍ الإرسال…';
+  saveError.hidden = true;
+  try {
+    if (new URLSearchParams(location.search).get('dry') === '1') {
+      console.info('Registration dry run', values);
+    } else {
+      await saveRegistration(values);
+    }
+    showSuccess(summary);
+  } catch {
+    saveError.querySelector('a').href = wa(summary);
+    saveError.hidden = false;
+    saveError.querySelector('a').focus();
+  } finally {
+    send.disabled = false;
+    $('back').disabled = false;
+    send.textContent = 'إرسال طلب التسجيل';
+  }
+});
 </script>
 </body>
 </html>

@@ -404,6 +404,8 @@ footer .brand img{mix-blend-mode:normal}
 <script type="module">
 const WHATSAPP = '905395224329';
 const FIREBASE = { apiKey: 'AIzaSyASiyRbue4AANq0CSBbJDPZF9tD83KpVcE', authDomain: 'silah-portal.firebaseapp.com', projectId: 'silah-portal', storageBucket: 'silah-portal.firebasestorage.app', messagingSenderId: '596282595018', appId: '1:596282595018:web:4b4ad3751783c77b944633' };
+// Firebase App Check (D-15). Empty siteKey = off. siteKey is the PUBLIC reCAPTCHA key; never put a secret or a debug token here.
+const APPCHECK = { siteKey: '', provider: 'enterprise' };
 const TIMES = { morning: 'صباحًا (8 - 12)', noon: 'ظهرًا (12 - 4)', evening: 'مساءً (4 - 8)', night: 'ليلًا (8 - 11)' };
 const COURSES = {"quran": "حفظ القرآن الكريم", "tajweed": "قواعد التجويد", "arabic": "اللغة العربية"};
 const $ = id => document.getElementById(id);
@@ -642,12 +644,39 @@ function showSuccess(summary) {
 }
 async function saveRegistration(values) {
   const base = 'https://www.gstatic.com/firebasejs/10.12.2/';
-  const [{ initializeApp, getApps }, { addDoc, collection, getFirestore }] = await Promise.all([
+  const [{ initializeApp, getApps }, { addDoc, collection, getFirestore, connectFirestoreEmulator }] = await Promise.all([
     import(base + 'firebase-app.js'),
     import(base + 'firebase-firestore.js')
   ]);
+  const first = !getApps().length;
   const app = getApps()[0] ?? initializeApp(FIREBASE);
-  await addDoc(collection(getFirestore(app), 'registrations'), values);
+  if (first) await startAppCheck(app, base);
+  const db = getFirestore(app);
+  // Local testing only: http://localhost…/?emulator=1 sends the form to the Firestore emulator, never to production.
+  if (first && LOCAL && new URLSearchParams(location.search).has('emulator')) connectFirestoreEmulator(db, '127.0.0.1', 8080);
+  await addDoc(collection(db, 'registrations'), values);
+}
+const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
+// Without reCAPTCHA (ad blocker, network) App Check is skipped, so the form is never held up while it is unenforced.
+async function startAppCheck(app, base) {
+  if (!APPCHECK.siteKey) return;
+  try {
+    if (LOCAL && new URLSearchParams(location.search).has('appcheckdebug')) self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+    const v3 = APPCHECK.provider === 'v3';
+    const get = () => v3 ? self.grecaptcha : self.grecaptcha?.enterprise;
+    const ready = await new Promise(resolve => {
+      setTimeout(() => resolve(false), 6000);
+      const go = () => get()?.ready ? get().ready(() => resolve(true)) : resolve(false);
+      if (get()) return go();
+      const el = document.createElement('script');
+      el.src = 'https://www.google.com/recaptcha/' + (v3 ? 'api.js' : 'enterprise.js'); el.async = true;
+      el.onload = go; el.onerror = () => resolve(false);
+      document.head.appendChild(el);
+    });
+    if (!ready) { console.warn('App Check skipped: reCAPTCHA did not load'); return; }
+    const C = await import(base + 'firebase-app-check.js');
+    C.initializeAppCheck(app, { provider: new (v3 ? C.ReCaptchaV3Provider : C.ReCaptchaEnterpriseProvider)(APPCHECK.siteKey), isTokenAutoRefreshEnabled: true });
+  } catch (e) { console.warn('App Check did not start', e); }
 }
 form.addEventListener('submit', async event => {
   event.preventDefault();

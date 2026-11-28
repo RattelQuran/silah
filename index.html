@@ -212,7 +212,7 @@ progress{grid-column:1/-1;inline-size:100%;block-size:7px;accent-color:var(--nav
 fieldset{border:0;margin:0;padding:0;min-inline-size:0}
 legend{font-weight:600;margin-block-end:9px}
 .segments{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;background:var(--cream);border-radius:22px}
-.segments label,.course-choices label,.preferredTime-choices label{position:relative;cursor:pointer}
+.segments label,.course-choices label,.preferredTime-choices label,.source-choices label{position:relative;cursor:pointer}
 .segments input,.choice input{position:absolute;opacity:0;inset-inline-start:12px;inset-block-start:10px}
 .segments span,.choice label span{display:flex;align-items:center;justify-content:center;gap:4px;min-block-size:48px;border-radius:16px;text-align:center;color:var(--navy-deep);line-height:1.25}
 .segments span{flex-direction:column;height:100%;padding:4px}
@@ -252,7 +252,8 @@ details p{padding-block-end:14px;color:var(--muted)}
 .field small{color:var(--muted)}
 .field input[aria-invalid=true],.choice input[aria-invalid=true]+span{border-color:#a41d32}
 .field-error,.save-error{color:#a41d32;font-size:.89rem}
-.course-choices,.preferredTime-choices{display:grid;gap:6px}
+.course-choices,.preferredTime-choices,.source-choices{display:grid;gap:6px}
+.source-choices{grid-template-columns:repeat(3,minmax(0,1fr))}
 .course-choices{grid-template-columns:repeat(3,minmax(0,1fr))}
 .preferredTime-choices{grid-template-columns:repeat(4,minmax(0,1fr))}
 .choice label span{border:1px solid var(--line);background:white;height:100%;padding:6px 2px;font-size:.83rem}
@@ -389,6 +390,7 @@ footer .brand img{mix-blend-mode:normal}
     <div id="contact-step" hidden>
       <div class="field-grid"><div class="field"><label for="r-parentName">اسم ولي الأمر</label><input id="r-parentName" name="parentName" aria-describedby="err-parentName" required maxlength="80" autocomplete="name"><p class="field-error" id="err-parentName" hidden></p></div><div class="field"><label for="r-country">الدولة</label><input id="r-country" name="country" aria-describedby="err-country" required maxlength="60" autocomplete="country-name"><p class="field-error" id="err-country" hidden></p></div></div>
       <div class="field"><label for="r-whatsapp">رقم واتساب</label><input id="r-whatsapp" name="whatsapp" aria-describedby="err-whatsapp hint-whatsapp" required type="tel" dir="ltr" maxlength="24" autocomplete="tel"><small id="hint-whatsapp">اكتبي الرقم مع رمز الدولة، مثل ‎+90.</small><p class="field-error" id="err-whatsapp" hidden></p></div>
+      <fieldset class="choice"><legend>كيف عرفتِ صلة؟</legend><div class="source-choices"><label><input type="radio" required name="source" value="instagram" aria-describedby="err-source"><span>إنستجرام</span></label><label><input type="radio" required name="source" value="tiktok" aria-describedby="err-source"><span>تيك توك</span></label><label><input type="radio" required name="source" value="threads" aria-describedby="err-source"><span>ثريدز</span></label><label><input type="radio" required name="source" value="friend" aria-describedby="err-source"><span>صديقة أو قريبة</span></label><label><input type="radio" required name="source" value="search" aria-describedby="err-source"><span>بحث جوجل</span></label><label><input type="radio" required name="source" value="other" aria-describedby="err-source"><span>غير ذلك</span></label></div><p class="field-error" id="err-source" hidden></p></fieldset>
       <div class="field"><label for="r-notes">ملاحظات</label><textarea id="r-notes" name="notes" maxlength="600" aria-describedby="err-notes"></textarea><p class="field-error" id="err-notes" hidden></p></div>
       <div class="form-actions"><button class="button primary" type="submit" id="send">إرسال طلب التسجيل</button><button class="button outline" type="button" id="back">السابق</button></div>
     </div>
@@ -405,6 +407,7 @@ footer .brand img{mix-blend-mode:normal}
 const WHATSAPP = '905395224329';
 const FIREBASE = { apiKey: 'AIzaSyASiyRbue4AANq0CSBbJDPZF9tD83KpVcE', authDomain: 'silah-portal.firebaseapp.com', projectId: 'silah-portal', storageBucket: 'silah-portal.firebasestorage.app', messagingSenderId: '596282595018', appId: '1:596282595018:web:4b4ad3751783c77b944633' };
 const TIMES = { morning: 'صباحًا (8 - 12)', noon: 'ظهرًا (12 - 4)', evening: 'مساءً (4 - 8)', night: 'ليلًا (8 - 11)' };
+const SOURCES = {"instagram": "إنستجرام", "tiktok": "تيك توك", "threads": "ثريدز", "friend": "صديقة أو قريبة", "search": "بحث جوجل", "other": "غير ذلك"};
 const COURSES = {"quran": "حفظ القرآن الكريم", "tajweed": "قواعد التجويد", "arabic": "اللغة العربية"};
 const $ = id => document.getElementById(id);
 const wa = message => 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(message);
@@ -567,7 +570,7 @@ function payload() {
     preferredTime: value('preferredTime'),
     notes: value('notes'),
     status: 'new',
-    source: 'site',
+    source: value('source'),
     at: Date.now()
   };
 }
@@ -576,13 +579,14 @@ const errors = {
   studentAge: 'أدخلي العمر بالسنوات من 4 إلى 18.',
   course: 'اختاري الدورة.',
   preferredTime: 'اختاري الوقت المناسب للتواصل.',
+  source: 'اختاري كيف عرفتِ صلة.',
   parentName: 'أدخلي اسم ولي الأمر (من 1 إلى 80 حرفًا).',
   country: 'أدخلي اسم الدولة (حتى 60 حرفًا).',
   whatsapp: 'أدخلي رقم واتساب مع رمز الدولة (من 8 إلى 24 حرفًا).',
   notes: 'اختصري الملاحظات إلى 600 حرف أو أقل.'
 };
 const childFields = ['studentName', 'studentAge', 'course', 'preferredTime'];
-const contactFields = ['parentName', 'country', 'whatsapp', 'notes'];
+const contactFields = ['parentName', 'country', 'whatsapp', 'source', 'notes'];
 function setError(name, invalid) {
   const error = $('err-' + name);
   error.hidden = !invalid;
@@ -603,6 +607,7 @@ function validate(values, fields) {
     parentName: !values.parentName || values.parentName.length > 80,
     country: !values.country || values.country.length > 60,
     whatsapp: values.whatsapp.length < 8 || values.whatsapp.length > 24 || !/^[+\d\s\-()]+$/.test(values.whatsapp) || values.whatsapp.replace(/\D/g, '').length < 8,
+    source: !Object.hasOwn(SOURCES, values.source),
     notes: values.notes.length > 600
   };
   let firstInvalid;
@@ -670,6 +675,7 @@ form.addEventListener('submit', async event => {
     'رقم واتساب: ' + values.whatsapp,
     'الدورة: ' + COURSES[values.course],
     'الوقت المناسب: ' + TIMES[values.preferredTime],
+    'عرفتنا من: ' + SOURCES[values.source],
     values.notes && 'ملاحظات: ' + values.notes
   ].filter(Boolean).join('\n');
   send.disabled = true;
